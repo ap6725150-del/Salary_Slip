@@ -123,7 +123,7 @@ if st.button("Calculate", use_container_width=True):
             return ["background-color: #d3d3d3; font-weight: bold"] * len(row)
         return [""] * len(row)
 
-    styled_df = df.round(2).style.apply(highlight_rows, axis=1)
+    styled_df = df.style.apply(highlight_rows, axis=1).format({"Yearly (₹)": "{:.2f}", "Monthly (₹)": "{:.2f}"})
     st.dataframe(styled_df)
 
     st.write("Monthly Net Salary:", round(net/12,2))
